@@ -42,6 +42,8 @@ dependencies {
     implementation "com.amuyu:logger:$versions.logger"
     compile "io.reactivex.rxjava2:rxjava:$versions.rxjava"
     compile "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+    compile "com.google.guava:guava:$versions.guava"
+    compile "com.google.code.gson:gson:$versions.gson"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
