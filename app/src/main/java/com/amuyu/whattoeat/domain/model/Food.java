@@ -25,6 +25,10 @@ public final class Food {
         this.mName = name;
     }
 
+    public String getName() {
+        return mName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

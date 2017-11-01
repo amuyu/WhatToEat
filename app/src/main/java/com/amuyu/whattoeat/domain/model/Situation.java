@@ -26,6 +26,10 @@ public final class Situation {
         this.mName = name;
     }
 
+    public String getName() {
+        return mName;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

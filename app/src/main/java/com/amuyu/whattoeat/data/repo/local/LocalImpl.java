@@ -24,6 +24,7 @@ public class LocalImpl implements LocalApi {
 
     public LocalImpl(Context context) {
         this.context = context;
+        loadData();
     }
 
     @Override
@@ -43,7 +44,7 @@ public class LocalImpl implements LocalApi {
     }
 
     private void loadSituations() {
-        situations = new ListJsonMapper<Situation>().
+        situations = new ListJsonMapper<>(Situation.class).
                 transFormSituations(getResponseFromLocalJson("situation_data.json"));
 
     }
@@ -53,10 +54,11 @@ public class LocalImpl implements LocalApi {
             situationFoodMap = new LinkedHashMap<>();
         }
 
-        List<SituationFood> situationFoods = new ListJsonMapper<SituationFood>().
+        List<SituationFood> situationFoods = new ListJsonMapper<>(SituationFood.class).
                 transFormSituations(getResponseFromLocalJson("food_data.json"));
 
-        for(SituationFood s : situationFoods) {
+        for(int i = 0; i < situationFoods.size(); i++) {
+            SituationFood s = situationFoods.get(i);
             situationFoodMap.put(s.getSituationId(), s);
         }
     }

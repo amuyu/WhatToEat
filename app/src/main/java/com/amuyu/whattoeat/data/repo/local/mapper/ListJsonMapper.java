@@ -5,6 +5,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,14 +15,20 @@ import java.util.List;
 public class ListJsonMapper<T> {
 
     private final Gson gson;
+    private final Class<T> clazz;
 
-    public ListJsonMapper() {
+    public ListJsonMapper(Class<T> clazz) {
+        this.clazz = clazz;
         gson = new Gson();
     }
 
     public List<T> transFormSituations(String json) {
-        Type type = new TypeToken<List<T>>() {
-        }.getType();
+
+
+        Type type = TypeToken.getParameterized(ArrayList.class, clazz).getType();
+
+//        Type type = new TypeToken<List<T>>() {
+//        }.getType();
         try {
             List<T> situations = gson.fromJson(json, type);
             return situations;
