@@ -1,4 +1,4 @@
-package com.amuyu.whattoeat;
+package com.amuyu.whattoeat.view;
 
 
 import android.app.Application;
