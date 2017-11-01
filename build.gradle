@@ -15,7 +15,8 @@ buildscript {
             'rxjava':'2.1.1',
             'rxandroid':'2.0.1',
             'guava':'18.0',
-            'gson':'2.8.2'
+            'gson':'2.8.2',
+            'dagger':'2.7'
     ]
     
     repositories {
