@@ -1,11 +1,14 @@
 package com.amuyu.whattoeat.data.repo.local;
 
 
+import com.amuyu.whattoeat.data.File;
 import com.amuyu.whattoeat.data.repo.DataSource;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.domain.model.Situation;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -16,7 +19,8 @@ public class LocalDataSource implements DataSource {
 
     private LocalApi localApi;
 
-    public LocalDataSource(LocalApi localApi) {
+    @Inject
+    public LocalDataSource(@File LocalApi localApi) {
         this.localApi = localApi;
     }
 

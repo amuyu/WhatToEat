@@ -16,12 +16,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class LocalImpl implements LocalApi {
 
     private final Context context;
     private List<Situation> situations;
     private HashMap<String, SituationFood> situationFoodMap;
 
+    @Inject
     public LocalImpl(Context context) {
         this.context = context;
         loadData();
