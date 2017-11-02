@@ -48,4 +48,9 @@ public class SituationsPresenter implements SituationsContract.Presenter {
                     }
                 });
     }
+
+    @Override
+    public void openSituationFoods(Situation situation) {
+        view.showFoodsUi(situation.getId());
+    }
 }

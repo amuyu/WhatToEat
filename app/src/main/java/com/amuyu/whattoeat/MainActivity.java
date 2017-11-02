@@ -3,6 +3,7 @@ package com.amuyu.whattoeat;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -42,10 +43,18 @@ public class MainActivity extends AppCompatActivity {
         SituationsFragment fragment = (SituationsFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if (fragment == null) {
             fragment = new SituationsFragment();
-
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(), fragment, R.id.contentFrame);
+            moveFragment(fragment);
         }
     }
+
+    public void moveFragment(Fragment fragment) {
+        ActivityUtils.replaceFragment(this, getSupportFragmentManager(),
+                ActivityUtils.FragmentOperation.create(fragment.getClass()), R.id.contentFrame);
+
+//        ActivityUtils.addFragmentToActivity(
+//                getSupportFragmentManager(), fragment, R.id.contentFrame);
+    }
+
+
 
 }

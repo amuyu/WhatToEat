@@ -26,6 +26,10 @@ public final class Situation {
         this.mName = name;
     }
 
+    public String getId() {
+        return mId;
+    }
+
     public String getName() {
         return mName;
     }

@@ -18,6 +18,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.ViewHolder> {
 
     private List<Situation> items = new ArrayList<>();
+    private SituationItemListener itemListener;
+
+    public SituationsAdapter(SituationItemListener itemListener) {
+        this.itemListener = itemListener;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,8 +33,14 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Situation situation = items.get(position);
+        final Situation situation = items.get(position);
         holder.textView.setText(situation.getName());
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemListener.onItemClick(situation);
+            }
+        });
     }
 
     @Override
@@ -58,5 +69,9 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.title);
         }
+    }
+
+    public interface SituationItemListener {
+        void onItemClick(Situation situation);
     }
 }

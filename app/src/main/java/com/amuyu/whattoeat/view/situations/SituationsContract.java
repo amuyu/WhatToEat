@@ -9,11 +9,12 @@ import java.util.List;
 
 public interface SituationsContract {
     interface View extends BaseView<Presenter> {
-        void initializeDagger();
         void showSituations(List<Situation> situations);
+        void showFoodsUi(String situationId);
     }
 
     interface Presenter extends BasePresenter {
         void loadSituations();
+        void openSituationFoods(Situation situation);
     }
 }
