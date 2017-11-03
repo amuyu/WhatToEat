@@ -1,10 +1,13 @@
 package com.amuyu.whattoeat.view.situations;
 
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amuyu.whattoeat.R;
@@ -41,6 +44,8 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
                 itemListener.onItemClick(situation);
             }
         });
+        holder.imageView.setImageResource((position%2 ==0) ? R.drawable.bg_coffee : R.drawable.unnamed);
+        holder.imageView.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
     }
 
     @Override
@@ -63,11 +68,12 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
+        public ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.title);
-
+            imageView = (ImageView) itemView.findViewById(R.id.itemImage);
         }
     }
 

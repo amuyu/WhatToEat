@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@color/colorPrimary">
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    app:cardElevation="5dp">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:textSize="26sp"
-        android:textColor="#eee"
-        android:gravity="center_vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="군것질을 하고 싶다면!?!?!"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:textSize="26sp"
+            android:textColor="#eee"
+            android:gravity="center"
+            tools:text="군것질을 하고 싶다면!?!?!"/>
+
+    </RelativeLayout>
 
 
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
