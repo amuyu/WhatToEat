@@ -33,10 +33,17 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
 
         context = this;
-        ((Button)findViewById(R.id.btnUp)).setOnClickListener(new View.OnClickListener() {
+        ((Button)findViewById(R.id.btnInsta)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                test2();
+                shareInsta();
+            }
+        });
+
+        ((Button)findViewById(R.id.btnKakao)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareKakao();
             }
         });
     }
@@ -46,9 +53,40 @@ public class SampleActivity extends AppCompatActivity {
         super.onStart();
     }
 
+    void shareKakao() {
+        // Create the new Intent using the 'Send' action.
+        Intent share = new Intent(Intent.ACTION_SEND);
+
+        String type = "image/*";
+        // Set the MIME type
+        share.setType(type);
+
+        try {
+            makeImage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String mediaPath = Environment.getExternalStorageDirectory() + "/profile.jpg";
+
+        // Create the URI from the media
+        Logger.d("path!!:"+mediaPath);
+        File media = new File(mediaPath);
+        Uri uri = Uri.fromFile(media);
+
+        // Add the URI to the Intent.
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+        share.putExtra(Intent.EXTRA_SUBJECT, "hello");
+        share.putExtra(Intent.EXTRA_TEXT, "#뭐먹지");
+        share.setPackage("com.kakao.talk");
+
+        // Broadcast the Intent.
+        startActivity(Intent.createChooser(share, "Share to"));
+    }
 
 
-    void test2() {
+
+    void shareInsta() {
         // Create the new Intent using the 'Send' action.
         Intent share = new Intent(Intent.ACTION_SEND);
 

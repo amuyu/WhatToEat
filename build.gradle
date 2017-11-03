@@ -16,7 +16,8 @@ buildscript {
             'rxandroid':'2.0.1',
             'guava':'18.0',
             'gson':'2.8.2',
-            'dagger':'2.7'
+            'dagger':'2.7',
+            'typekit':'1.0.1'
     ]
     
     repositories {
@@ -36,6 +37,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 

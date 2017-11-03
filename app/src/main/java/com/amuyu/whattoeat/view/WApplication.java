@@ -8,6 +8,7 @@ import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.di.repo.ApplicationComponent;
 import com.amuyu.whattoeat.di.repo.ApplicationModule;
 import com.amuyu.whattoeat.di.repo.DaggerApplicationComponent;
+import com.tsengvn.typekit.Typekit;
 
 public class WApplication extends Application {
 
@@ -21,6 +22,10 @@ public class WApplication extends Application {
         component = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(getApplicationContext()))
                 .build();
+
+        Typekit.getInstance()
+                .addNormal(Typekit.createFromAsset(this, "ya_bold.ttf"))
+                .addBold(Typekit.createFromAsset(this, "jua.ttf"));
     }
 
     public ApplicationComponent getApplicationComponent() {

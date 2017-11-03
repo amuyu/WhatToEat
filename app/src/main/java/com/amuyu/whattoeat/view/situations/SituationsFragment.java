@@ -4,7 +4,8 @@ package com.amuyu.whattoeat.view.situations;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +44,11 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
 
         RecyclerView listView = (RecyclerView)view.findViewById(R.id.list);
         listView.setAdapter(listAdpater);
-//        listView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        DividerItemDecoration decoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(getActivity().getResources().getDrawable(R.drawable.list_line_vertical));
+        listView.addItemDecoration(decoration);
+        listView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        listView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         return view;
     }

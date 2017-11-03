@@ -1,5 +1,6 @@
 package com.amuyu.whattoeat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 
 import com.amuyu.whattoeat.util.ActivityUtils;
 import com.amuyu.whattoeat.view.situations.SituationsFragment;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
             fragment = new SituationsFragment();
             moveFragment(fragment);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
     public void moveFragment(Fragment fragment) {

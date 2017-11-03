@@ -35,7 +35,7 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Situation situation = items.get(position);
         holder.textView.setText(situation.getName());
-        holder.textView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 itemListener.onItemClick(situation);
@@ -62,12 +62,12 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         public TextView textView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.title);
+
         }
     }
 
