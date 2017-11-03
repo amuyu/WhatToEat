@@ -68,6 +68,7 @@ dependencies {
     // share
     // 카카오링크 sdk를 사용하기 위해 필요.
     compile group: 'com.kakao.sdk', name: 'kakaolink', version: '1.6.2'
+    compile project(':loading')
 
 
     androidTestImplementation 'junit:junit:4.12'
