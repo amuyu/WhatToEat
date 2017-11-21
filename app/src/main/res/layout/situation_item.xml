@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:orientation="vertical"
-    app:cardElevation="5dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    tools:layout_marginTop="16dp"
+    tools:layout_marginLeft="16dp"
+    android:background="@drawable/rounded"
+    >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/itemImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
+            android:tag="text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            tools:text="Trevor Hansen"
+            android:textColor="@android:color/black"
             android:textSize="26sp"
-            android:textColor="#eee"
-            android:gravity="center"
-            tools:text="군것질을 하고 싶다면!?!?!"/>
+            android:layout_centerVertical="true"
+            />
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:maxWidth="110dp"
+        android:visibility="gone"
+        tools:text="Trevor Hansen is our best friend"
+        />
 
-
-</android.support.v7.widget.CardView>
+</RelativeLayout>
