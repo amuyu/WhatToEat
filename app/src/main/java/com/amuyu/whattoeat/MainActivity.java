@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        SituationsFragment fragment = (SituationsFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if (fragment == null) {
             fragment = new SituationsFragment();
-            moveFragment(fragment);
+            moveFragment(fragment, false);
         }
     }
 
@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
-    public void moveFragment(Fragment fragment) {
+    public void moveFragment(Fragment fragment, boolean addToBackStack) {
+        ActivityUtils.FragmentOperation operation = ActivityUtils.FragmentOperation.create(fragment.getClass());
+        operation.addToBackStack(addToBackStack);
         ActivityUtils.replaceFragment(this, getSupportFragmentManager(),
-                ActivityUtils.FragmentOperation.create(fragment.getClass()), R.id.contentFrame);
+                operation, R.id.contentFrame);
 
 //        ActivityUtils.addFragmentToActivity(
 //                getSupportFragmentManager(), fragment, R.id.contentFrame);

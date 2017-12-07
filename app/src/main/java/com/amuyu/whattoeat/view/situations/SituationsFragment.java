@@ -97,7 +97,7 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
     public void showFoodsUi(String situationId) {
         Logger.d("");
         Fragment fragment = new FoodsFragment();
-        ((MainActivity)getActivity()).moveFragment(fragment);
+        ((MainActivity)getActivity()).moveFragment(fragment, true);
     }
 
     SituationsAdapter.SituationItemListener itemListener = new SituationsAdapter.SituationItemListener() {
