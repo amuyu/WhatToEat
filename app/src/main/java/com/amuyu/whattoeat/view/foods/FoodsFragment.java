@@ -11,11 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.R;
+import com.amuyu.whattoeat.data.repo.remote.IFirebaseRepo;
 import com.amuyu.whattoeat.di.foods.FoodsModule;
 import com.amuyu.whattoeat.domain.model.Food;
+import com.amuyu.whattoeat.infra.GlideApp;
 import com.amuyu.whattoeat.view.SampleActivity;
 import com.amuyu.whattoeat.view.WApplication;
 
@@ -23,16 +26,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class FoodsFragment extends Fragment implements FoodsContract.View {
+public class FoodsFragment extends Fragment implements FoodsContract.View, FoodItemListener {
 
     private FoodsAdapter listAdapter;
     @Inject public FoodsContract.Presenter presenter;
+    @Inject public IFirebaseRepo repo;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Logger.d("");
-        listAdapter = new FoodsAdapter(itemListener);
+        listAdapter = new FoodsAdapter(this);
         initializeDagger();
     }
 
@@ -45,7 +49,7 @@ public class FoodsFragment extends Fragment implements FoodsContract.View {
 
         RecyclerView listView = (RecyclerView)view.findViewById(R.id.list);
         listView.setAdapter(listAdapter);
-        listView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        listView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         Button button = (Button)view.findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +99,15 @@ public class FoodsFragment extends Fragment implements FoodsContract.View {
         listAdapter.replaceData(foods);
     }
 
-    FoodsAdapter.FoodsItemListener itemListener = new FoodsAdapter.FoodsItemListener() {
-        @Override
-        public void onItemClick(Food food) {
-            //
-        }
-    };
+    @Override
+    public void onItemClick(Food food) {
+
+    }
+
+    @Override
+    public void onDrawImage(final ImageView imageView) {
+        repo.loadImage(GlideApp.with(this), "photos/bg_coffee.jpg")
+                .centerCrop()
+                .into(imageView);
+    }
 }

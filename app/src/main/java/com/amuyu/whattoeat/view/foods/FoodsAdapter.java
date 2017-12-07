@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amuyu.whattoeat.R;
@@ -18,9 +19,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> {
 
     private List<Food> items = new ArrayList<>();
-    private FoodsItemListener itemListener;
+    private FoodItemListener itemListener;
 
-    public FoodsAdapter(FoodsItemListener itemListener) {
+    public FoodsAdapter(FoodItemListener itemListener) {
         this.itemListener = itemListener;
     }
 
@@ -42,6 +43,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
                 itemListener.onItemClick(food);
             }
         });
+        itemListener.onDrawImage(holder.imageView);
     }
 
     @Override
@@ -65,14 +67,14 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
+        public ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.title);
+            imageView = (ImageView) itemView.findViewById(R.id.image);
+//            imageView.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
         }
     }
 
-    public interface FoodsItemListener {
-        void onItemClick(Food food);
-    }
 }
