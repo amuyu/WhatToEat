@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "179923027554",
+    "firebase_url": "https://whattoeat-83c6e.firebaseio.com",
+    "project_id": "whattoeat-83c6e",
+    "storage_bucket": "whattoeat-83c6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179923027554:android:d90ad82f28fe4545",
+        "android_client_info": {
+          "package_name": "com.amuyu.whattoeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179923027554-sgbcviretdkm5pj1sphph3r97ddrm3hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTHp0KrvCB5uo_cJYKA_CuqRSSiRlns7g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
