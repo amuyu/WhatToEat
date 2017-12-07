@@ -69,7 +69,7 @@ public class LoadingView extends ImageView {
         }
     }
 
-    private void stopAnimation() {
+    public void stopAnimation() {
         if (mLoadingDrawable != null) {
             mLoadingDrawable.stop();
         }

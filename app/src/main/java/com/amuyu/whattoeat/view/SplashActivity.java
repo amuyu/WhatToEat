@@ -13,7 +13,9 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.concurrent.TimeUnit;
 
+import app.dinus.com.loadingdrawable.LoadingView;
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
 public class SplashActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         Observable.timer(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
@@ -31,6 +34,13 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LoadingView loadingView = (LoadingView) findViewById(R.id.swap_view);
+        loadingView.stopAnimation();
     }
 
     @Override
