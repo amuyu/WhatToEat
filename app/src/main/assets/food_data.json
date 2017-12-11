@@ -1,81 +1,22 @@
 [
   {
-    "situation_id":"1",
-    "foods":[
-      {
-        "food_id":"11",
-        "name":"자장면"
-      },
-      {
-        "food_id":"12",
-        "name":"짬뽕"
-      },
-      {
-        "food_id":"13",
-        "name":"탕수육"
-      },
-      {
-        "food_id":"14",
-        "name":"깐풍기"
-      },
-      {
-        "food_id":"15",
-        "name":"만두"
-      },
-      {
-        "food_id":"16",
-        "name":"볶음밥"
-      },
-      {
-        "food_id":"17",
-        "name":"간짜장"
-      },
-      {
-        "food_id":"18",
-        "name":"울면"
-      }
-    ]
+    "id":"85fd9798-8417-49c7-a8e9-be8092daa56b",
+    "name":"자장면",
+    "sid":"1"
   },
   {
-    "situation_id":"2",
-    "foods":[
-      {
-        "food_id":"21",
-        "name":"아메리카노"
-      },
-      {
-        "food_id":"22",
-        "name":"라떼"
-      },
-      {
-        "food_id":"23",
-        "name":"카푸치노"
-      },
-      {
-        "food_id":"24",
-        "name":"카라멜마끼아또"
-      }
-    ]
+    "id":"999e1c85-1518-4c72-8bc0-9068a880d870",
+    "name":"짬뽕",
+    "sid":"1"
   },
   {
-    "situation_id":"3",
-    "foods":[
-      {
-        "food_id":"31",
-        "name":"중국집"
-      },
-      {
-        "food_id":"32",
-        "name":"피자"
-      },
-      {
-        "food_id":"33",
-        "name":"치킨"
-      },
-      {
-        "food_id":"34",
-        "name":"보쌈"
-      }
-    ]
+    "id":"b75eefcf-0b13-4b4a-88a2-33968f766cc9",
+    "name":"탕수육",
+    "sid":"1"
+  },
+  {
+    "id":"e04896a4-2956-4fa1-88ea-afc1aa213226",
+    "name":"깐풍기",
+    "sid":"1"
   }
 ]

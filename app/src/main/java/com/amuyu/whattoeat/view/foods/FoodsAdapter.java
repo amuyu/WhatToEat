@@ -43,7 +43,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
                 itemListener.onItemClick(food);
             }
         });
-        itemListener.onDrawImage(holder.imageView);
+        itemListener.onDrawImage(holder.imageView, food.getId());
     }
 
     @Override

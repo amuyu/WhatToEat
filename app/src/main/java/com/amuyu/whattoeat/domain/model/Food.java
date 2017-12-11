@@ -10,23 +10,36 @@ import java.util.UUID;
 
 public final class Food {
     @NonNull
-    @SerializedName("food_id")
-    private final String mId;
+    @SerializedName("id")
+    private String id;
 
     @SerializedName("name")
-    private final String mName;
+    private String name;
 
-    public Food(String name) {
-        this(UUID.randomUUID().toString(), name);
+    @SerializedName("sid")
+    private String sid;
+
+    public Food() {
+        // Firebase Database
     }
 
-    public Food(String id, String name) {
-        this.mId = id;
-        this.mName = name;
+    public Food(String sid, String name) {
+        this(UUID.randomUUID().toString(), name, sid);
+    }
+
+    public Food(String id, String name, String sid) {
+        this.id = id;
+        this.name = name;
+        this.sid = sid;
+    }
+
+    @NonNull
+    public String getId() {
+        return id;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     @Override
@@ -34,12 +47,13 @@ public final class Food {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Food food = (Food) o;
-        return Objects.equal(mId, food.mId) &&
-                Objects.equal(mName, food.mName);
+        return Objects.equal(id, food.id) &&
+                Objects.equal(name, food.name) &&
+                Objects.equal(sid, food.sid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mId,mName);
+        return Objects.hashCode(id, name, sid);
     }
 }

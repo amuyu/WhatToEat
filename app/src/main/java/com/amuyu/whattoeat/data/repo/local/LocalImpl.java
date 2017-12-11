@@ -6,6 +6,7 @@ import android.content.Context;
 import com.amuyu.whattoeat.data.model.SituationFood;
 import com.amuyu.whattoeat.data.repo.local.mapper.ListJsonMapper;
 import com.amuyu.whattoeat.domain.model.Food;
+import com.amuyu.whattoeat.domain.model.Group;
 import com.amuyu.whattoeat.domain.model.Situation;
 
 import java.io.BufferedReader;
@@ -21,6 +22,7 @@ import javax.inject.Inject;
 public class LocalImpl implements LocalApi {
 
     private final Context context;
+    private List<Group> groups;
     private List<Situation> situations;
     private HashMap<String, SituationFood> situationFoodMap;
 
@@ -44,6 +46,12 @@ public class LocalImpl implements LocalApi {
     private void loadData() {
         loadSituations();
         loadSituationFoods();
+    }
+
+    private void loadGroups() {
+        groups = new ListJsonMapper<>(Group.class).
+                transFormSituations(getResponseFromLocalJson("group_data.json"));
+
     }
 
     private void loadSituations() {

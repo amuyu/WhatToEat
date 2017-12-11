@@ -42,6 +42,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation (name:'typekit-release', ext:'aar')
 
+    //noinspection GradleCompatible
     implementation "com.android.support:design:$versions.supportLibrary"
     implementation "com.android.support:cardview-v7:$versions.supportLibrary"
     implementation "com.android.support:appcompat-v7:$versions.supportLibrary"

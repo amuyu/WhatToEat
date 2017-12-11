@@ -11,27 +11,35 @@ import java.util.UUID;
 public final class Situation {
     @NonNull
     @SerializedName("id")
-    private final String mId;
+    private String id;
 
     @NonNull
     @SerializedName("name")
-    private final String mName;
+    private String name;
 
-    public Situation(String name) {
-        this(UUID.randomUUID().toString(), name);
+    @NonNull
+    @SerializedName("gid")
+    private String gid;
+
+    public Situation() {
     }
 
-    public Situation(String id, String name) {
-        this.mId = id;
-        this.mName = name;
+    public Situation(String name, String gid) {
+        this(UUID.randomUUID().toString(), name, gid);
+    }
+
+    public Situation(String id, String name, String gid) {
+        this.id = id;
+        this.name = name;
+        this.gid = gid;
     }
 
     public String getId() {
-        return mId;
+        return id;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     @Override
@@ -39,12 +47,13 @@ public final class Situation {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Situation situation = (Situation) obj;
-        return Objects.equal(mId, situation.mId) &&
-                Objects.equal(mName, situation.mName);
+        return Objects.equal(id, situation.id) &&
+                Objects.equal(name, situation.name) &&
+                Objects.equal(gid, situation.gid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mId,mName);
+        return Objects.hashCode(id, name, gid);
     }
 }

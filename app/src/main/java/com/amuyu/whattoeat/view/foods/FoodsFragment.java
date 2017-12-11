@@ -105,8 +105,8 @@ public class FoodsFragment extends Fragment implements FoodsContract.View, FoodI
     }
 
     @Override
-    public void onDrawImage(final ImageView imageView) {
-        repo.loadImage(GlideApp.with(this), "photos/bg_coffee.jpg")
+    public void onDrawImage(final ImageView imageView, final String name) {
+        repo.loadImage(GlideApp.with(this), name)
                 .centerCrop()
                 .into(imageView);
     }
