@@ -13,9 +13,10 @@ import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.MainActivity;
 import com.amuyu.whattoeat.R;
 import com.amuyu.whattoeat.di.situations.SituationModule;
-import com.amuyu.whattoeat.domain.model.Situation;
 import com.amuyu.whattoeat.view.WApplication;
 import com.amuyu.whattoeat.view.foods.FoodsFragment;
+import com.amuyu.whattoeat.view.model.SituationItem;
+import com.amuyu.whattoeat.view.model.SituationViewItem;
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager;
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration;
 
@@ -88,7 +89,7 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
     }
 
     @Override
-    public void showSituations(List<Situation> situations) {
+    public void showSituations(List<SituationViewItem> situations) {
         Logger.d("");
         listAdpater.replaceData(situations);
     }
@@ -102,7 +103,7 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
 
     SituationsAdapter.SituationItemListener itemListener = new SituationsAdapter.SituationItemListener() {
         @Override
-        public void onItemClick(Situation situation) {
+        public void onItemClick(SituationItem situation) {
             presenter.openSituationFoods(situation);
         }
     };

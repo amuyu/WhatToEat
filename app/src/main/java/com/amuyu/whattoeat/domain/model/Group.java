@@ -58,4 +58,12 @@ public class Group {
         return Objects.equal(id, group.id) &&
                 Objects.equal(name, group.name);
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

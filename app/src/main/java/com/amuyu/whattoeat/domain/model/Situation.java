@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.UUID;
 
-public final class Situation {
+public class Situation {
     @NonNull
     @SerializedName("id")
     private String id;
@@ -42,6 +42,10 @@ public final class Situation {
         return name;
     }
 
+    public String getGid() {
+        return gid;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -55,5 +59,14 @@ public final class Situation {
     @Override
     public int hashCode() {
         return Objects.hashCode(id, name, gid);
+    }
+
+    @Override
+    public String toString() {
+        return "Situation{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", gid='" + gid + '\'' +
+                '}';
     }
 }

@@ -3,7 +3,8 @@ package com.amuyu.whattoeat.view.situations;
 
 import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.data.repo.Repository;
-import com.amuyu.whattoeat.domain.model.Situation;
+import com.amuyu.whattoeat.view.model.SituationItem;
+import com.amuyu.whattoeat.view.model.SituationViewItem;
 
 import java.util.List;
 
@@ -35,10 +36,10 @@ public class SituationsPresenter implements SituationsContract.Presenter {
 
     @Override
     public void loadSituations() {
-        repository.getSituations()
-                .subscribe(new Consumer<List<Situation>>() {
+        repository.getSituationsForView()
+                .subscribe(new Consumer<List<SituationViewItem>>() {
                     @Override
-                    public void accept(List<Situation> situations) throws Exception {
+                    public void accept(List<SituationViewItem> situations) throws Exception {
                         view.showSituations(situations);
                     }
                 }, new Consumer<Throwable>() {
@@ -49,8 +50,10 @@ public class SituationsPresenter implements SituationsContract.Presenter {
                 });
     }
 
+
+
     @Override
-    public void openSituationFoods(Situation situation) {
+    public void openSituationFoods(SituationItem situation) {
         view.showFoodsUi(situation.getId());
     }
 }

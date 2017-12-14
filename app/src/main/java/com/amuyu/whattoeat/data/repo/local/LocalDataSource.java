@@ -4,6 +4,7 @@ package com.amuyu.whattoeat.data.repo.local;
 import com.amuyu.whattoeat.data.File;
 import com.amuyu.whattoeat.data.repo.DataSource;
 import com.amuyu.whattoeat.domain.model.Food;
+import com.amuyu.whattoeat.domain.model.Group;
 import com.amuyu.whattoeat.domain.model.Situation;
 
 import java.util.List;
@@ -51,6 +52,22 @@ public class LocalDataSource implements DataSource {
                     e.onComplete();
                 } else {
                     e.onError(new Throwable("no food data"));
+                }
+            }
+        }, BackpressureStrategy.LATEST);
+    }
+
+    @Override
+    public Flowable<List<Group>> getGroups() {
+        return Flowable.create(new FlowableOnSubscribe<List<Group>>() {
+            @Override
+            public void subscribe(FlowableEmitter<List<Group>> e) throws Exception {
+                List<Group> groups = localApi.getGroups();
+                if (groups != null) {
+                    e.onNext(groups);
+                    e.onComplete();
+                } else {
+                    e.onError(new Throwable("no group data"));
                 }
             }
         }, BackpressureStrategy.LATEST);

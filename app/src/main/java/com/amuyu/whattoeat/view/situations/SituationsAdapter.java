@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.amuyu.whattoeat.R;
-import com.amuyu.whattoeat.domain.model.Situation;
+import com.amuyu.whattoeat.view.model.GroupItem;
+import com.amuyu.whattoeat.view.model.SituationItem;
+import com.amuyu.whattoeat.view.model.SituationViewItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.ViewHolder> {
 
-    private List<Situation> items = new ArrayList<>();
+    private List<SituationViewItem> items = new ArrayList<>();
     private SituationItemListener itemListener;
+
+    private final int HEADER_TYPE = 0;
+    private final int ITEM_TYPE = 1;
 
     public SituationsAdapter(SituationItemListener itemListener) {
         this.itemListener = itemListener;
@@ -26,13 +31,18 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) return 1;
-        return super.getItemViewType(position);
+        SituationViewItem item = getItem(position);
+        if (item instanceof GroupItem)
+            return HEADER_TYPE;
+        else if (item instanceof SituationItem)
+            return ITEM_TYPE;
+
+        return ITEM_TYPE;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == 1) {
+        if (viewType == HEADER_TYPE) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.situation_header_item, parent, false);
             return new ViewHolder(view);
@@ -45,14 +55,20 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Situation situation = items.get(position);
-        holder.textView.setText(situation.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                itemListener.onItemClick(situation);
-            }
-        });
+        final SituationViewItem situation = items.get(position);
+        if (situation instanceof GroupItem) {
+            GroupItem item = (GroupItem)situation;
+            holder.textView.setText(item.getName());
+        } else if (situation instanceof SituationItem) {
+            final SituationItem item = (SituationItem)situation;
+            holder.textView.setText(item.getName());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    itemListener.onItemClick(item);
+                }
+            });
+        }
     }
 
     @Override
@@ -60,12 +76,16 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
         return items.size();
     }
 
-    public void replaceData(List<Situation> situations) {
+    public SituationViewItem getItem(int position) {
+        return items.get(position);
+    }
+
+    public void replaceData(List<SituationViewItem> situations) {
         setList(situations);
         notifyDataSetChanged();
     }
 
-    private void setList(List<Situation> situations) {
+    private void setList(List<SituationViewItem> situations) {
         items = checkNotNull(situations);
     }
 
@@ -83,6 +103,6 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     }
 
     public interface SituationItemListener {
-        void onItemClick(Situation situation);
+        void onItemClick(SituationItem situation);
     }
 }

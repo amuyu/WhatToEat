@@ -31,3 +31,5 @@ docs/
 
 #log util
 logs/
+
+google-services.json
