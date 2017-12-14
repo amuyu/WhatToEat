@@ -28,6 +28,8 @@ import javax.inject.Inject;
 
 public class FoodsFragment extends Fragment implements FoodsContract.View, FoodItemListener {
 
+    public static final String SITUATION_ID = "situation_id";
+
     private FoodsAdapter listAdapter;
     @Inject public FoodsContract.Presenter presenter;
     @Inject public IFirebaseRepo repo;
@@ -71,10 +73,9 @@ public class FoodsFragment extends Fragment implements FoodsContract.View, FoodI
 
     @Override
     public void initializeDagger() {
-        String situationId = "1";
         WApplication app = (WApplication)getActivity().getApplication();
         app.getApplicationComponent()
-                .foodsComponent(new FoodsModule(this, situationId))
+                .foodsComponent(new FoodsModule(this, getArguments().getString(SITUATION_ID)))
                 .inject(this);
     }
 

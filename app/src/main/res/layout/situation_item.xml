@@ -6,11 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="top"
+    android:layout_gravity="center_horizontal"
     tools:layout_marginTop="16dp"
     tools:layout_marginLeft="16dp"
-    android:background="@drawable/rounded"
-    >
+    android:background="@drawable/rounded">
 
     <RelativeLayout
         android:id="@+id/container"

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.util.ActivityUtils;
 import com.amuyu.whattoeat.view.situations.SituationsFragment;
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void moveFragment(Fragment fragment, boolean addToBackStack) {
         ActivityUtils.FragmentOperation operation = ActivityUtils.FragmentOperation.create(fragment.getClass());
+        operation.arguments(fragment.getArguments());
+        if (fragment.getArguments() != null)
+            Logger.d("bundle:"+fragment.getArguments().toString());
         operation.addToBackStack(addToBackStack);
         ActivityUtils.replaceFragment(this, getSupportFragmentManager(),
                 operation, R.id.contentFrame);

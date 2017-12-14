@@ -2,7 +2,7 @@ package com.amuyu.whattoeat.data.repo;
 
 
 import com.amuyu.logger.Logger;
-import com.amuyu.whattoeat.data.Local;
+import com.amuyu.whattoeat.data.Remote;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.domain.model.Group;
 import com.amuyu.whattoeat.domain.model.Situation;
@@ -38,7 +38,7 @@ public class Repository implements DataSource {
     private String mSidFoods;
 
     @Inject
-    public Repository(@Local DataSource dataSource) {
+    public Repository(@Remote DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

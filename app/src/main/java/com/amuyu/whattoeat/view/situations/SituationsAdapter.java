@@ -22,8 +22,8 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     private List<SituationViewItem> items = new ArrayList<>();
     private SituationItemListener itemListener;
 
-    private final int HEADER_TYPE = 0;
-    private final int ITEM_TYPE = 1;
+    private final int HEADER_TYPE = 1;
+    private final int ITEM_TYPE = 0;
 
     public SituationsAdapter(SituationItemListener itemListener) {
         this.itemListener = itemListener;

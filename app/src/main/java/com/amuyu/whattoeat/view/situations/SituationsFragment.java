@@ -24,6 +24,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.amuyu.whattoeat.view.foods.FoodsFragment.SITUATION_ID;
+
 public class SituationsFragment extends Fragment implements SituationsContract.View {
 
     private SituationsAdapter listAdpater;
@@ -50,6 +52,7 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
                 .setOrientation(ChipsLayoutManager.HORIZONTAL)
                 .setMaxViewsInRow(3)
                 .setRowStrategy(ChipsLayoutManager.STRATEGY_CENTER_DENSE)
+                .withLastRow(true)
                 .build();
 
         listView.addItemDecoration(new SpacingItemDecoration(getResources().getDimensionPixelOffset(R.dimen.item_space),
@@ -98,6 +101,9 @@ public class SituationsFragment extends Fragment implements SituationsContract.V
     public void showFoodsUi(String situationId) {
         Logger.d("");
         Fragment fragment = new FoodsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(SITUATION_ID, situationId);
+        fragment.setArguments(bundle);
         ((MainActivity)getActivity()).moveFragment(fragment, true);
     }
 

@@ -3,10 +3,12 @@ package com.amuyu.whattoeat.di.repo;
 
 import com.amuyu.whattoeat.data.File;
 import com.amuyu.whattoeat.data.Local;
+import com.amuyu.whattoeat.data.Remote;
 import com.amuyu.whattoeat.data.repo.DataSource;
 import com.amuyu.whattoeat.data.repo.local.LocalApi;
 import com.amuyu.whattoeat.data.repo.local.LocalDataSource;
 import com.amuyu.whattoeat.data.repo.local.LocalImpl;
+import com.amuyu.whattoeat.data.repo.remote.RemoteDataSource;
 
 import dagger.Binds;
 import dagger.Module;
@@ -22,4 +24,8 @@ public abstract class RepositoryModule {
     @Binds
     @Local
     abstract DataSource provideLocalDataSource(LocalDataSource localDataSource);
+
+    @Binds
+    @Remote
+    abstract DataSource provideRemoteDataSource(RemoteDataSource remoteDataSource);
 }
