@@ -18,7 +18,8 @@ buildscript {
             'gson':'2.8.2',
             'dagger':'2.7',
             'typekit':'1.0.1',
-            'glide':'4.4.0'
+            'glide':'4.4.0',
+            'firebase':'11.4.2'
     ]
     
     repositories {

@@ -25,7 +25,19 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (position == 0) return 1;
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == 1) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.situation_header_item, parent, false);
+            return new ViewHolder(view);
+        }
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.situation_item, parent, false);
         return new ViewHolder(view);

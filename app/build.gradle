@@ -81,7 +81,8 @@ dependencies {
 //
 //    // FirebaseUI Storage only'
     implementation 'com.firebaseui:firebase-ui-storage:3.1.0'
-    implementation 'com.google.firebase:firebase-firestore:11.4.2'
+    implementation "com.google.firebase:firebase-database:$versions.firebase"
+    implementation "com.google.firebase:firebase-firestore:$versions.firebase"
 
     implementation 'com.android.support:multidex:1.0.1'
 
