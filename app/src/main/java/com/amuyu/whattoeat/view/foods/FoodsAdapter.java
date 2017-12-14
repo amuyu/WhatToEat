@@ -39,8 +39,8 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.itemView.setSelected(true);
-                itemListener.onItemClick(food);
+                holder.itemView.setSelected(!holder.itemView.isSelected());
+                itemListener.onItemClick(food, holder.itemView.isSelected());
             }
         });
         itemListener.onDrawImage(holder.imageView, food.getId());

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.R;
@@ -22,9 +23,12 @@ import com.amuyu.whattoeat.infra.GlideApp;
 import com.amuyu.whattoeat.view.SampleActivity;
 import com.amuyu.whattoeat.view.WApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import static com.amuyu.whattoeat.view.SampleActivity.FOOD_LIST;
 
 public class FoodsFragment extends Fragment implements FoodsContract.View, FoodItemListener {
 
@@ -57,8 +61,7 @@ public class FoodsFragment extends Fragment implements FoodsContract.View, FoodI
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SampleActivity.class);
-                startActivity(intent);
+                presenter.ask();
             }
         });
 
@@ -101,8 +104,21 @@ public class FoodsFragment extends Fragment implements FoodsContract.View, FoodI
     }
 
     @Override
-    public void onItemClick(Food food) {
+    public void showRequest(ArrayList<Food> selectedFood) {
+        Logger.d(selectedFood);
+        Intent intent = new Intent(getActivity(), SampleActivity.class);
+        intent.putExtra(FOOD_LIST, selectedFood);
+        startActivity(intent);
+    }
 
+    @Override
+    public void showOverSelectedFood() {
+        Toast.makeText(getActivity(), "음식은 4개만!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(Food food, boolean selected) {
+        presenter.selectFood(food, selected);
     }
 
     @Override

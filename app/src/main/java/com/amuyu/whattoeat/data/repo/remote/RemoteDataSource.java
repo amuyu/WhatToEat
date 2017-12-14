@@ -1,6 +1,7 @@
 package com.amuyu.whattoeat.data.repo.remote;
 
 
+import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.data.repo.DataSource;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.domain.model.Group;
@@ -71,8 +72,10 @@ public class RemoteDataSource implements DataSource {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         List<Food> foods = new ArrayList<>();
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Logger.d(snapshot.toString());
                             foods.add(snapshot.getValue(Food.class));
                         }
+                        Logger.d(foods);
                         e.onNext(foods);
                     }
 

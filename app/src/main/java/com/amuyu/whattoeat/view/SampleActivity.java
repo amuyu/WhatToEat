@@ -12,10 +12,15 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.R;
+import com.amuyu.whattoeat.data.repo.remote.FirebaseImpl;
+import com.amuyu.whattoeat.data.repo.remote.IFirebaseRepo;
+import com.amuyu.whattoeat.domain.model.Food;
+import com.amuyu.whattoeat.infra.GlideApp;
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
 import com.kakao.message.template.ButtonObject;
@@ -31,18 +36,25 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class SampleActivity extends AppCompatActivity {
 
     private static final int FROG_ID = 212121;
+    public static final String FOOD_LIST = "food_list";
     Context context;
     boolean clicked = false;
+    public IFirebaseRepo repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
+
+        repo = new FirebaseImpl();
+
+
 
         context = this;
         ((Button)findViewById(R.id.btnInsta)).setOnClickListener(new View.OnClickListener() {
@@ -60,6 +72,8 @@ public class SampleActivity extends AppCompatActivity {
                 uploadImage();
             }
         });
+
+        loadImage();
     }
 
     @Override
@@ -75,11 +89,11 @@ public class SampleActivity extends AppCompatActivity {
         // Set the MIME type
         share.setType(type);
 
-        try {
-            makeImage();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            makeImage();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         String mediaPath = Environment.getExternalStorageDirectory() + "/profile.jpg";
 
@@ -96,6 +110,27 @@ public class SampleActivity extends AppCompatActivity {
 
         // Broadcast the Intent.
         startActivity(Intent.createChooser(share, "Share to"));
+    }
+
+    void loadImage() {
+        ArrayList<Food> list = (ArrayList<Food>)getIntent().getSerializableExtra(FOOD_LIST);
+        Logger.d(list);
+
+        ArrayList<ImageView> views = new ArrayList<>();
+        views.add((ImageView)findViewById(R.id.imageView1));
+        views.add((ImageView)findViewById(R.id.imageView2));
+        views.add((ImageView)findViewById(R.id.imageView3));
+        views.add((ImageView)findViewById(R.id.imageView4));
+
+
+        if (list.size() > 0) {
+            for (int i=0; i<list.size();i++) {
+                repo.loadImage(GlideApp.with(this), list.get(i).getId())
+                        .centerCrop()
+                        .into(views.get(i));
+            }
+        }
+
     }
 
 
@@ -170,6 +205,11 @@ public class SampleActivity extends AppCompatActivity {
 
     private void uploadImage() {
 
+        try {
+            makeImage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         String mediaPath = Environment.getExternalStorageDirectory() + "/profile.jpg";
 

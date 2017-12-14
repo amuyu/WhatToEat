@@ -6,6 +6,9 @@ import com.amuyu.whattoeat.data.repo.Repository;
 import com.amuyu.whattoeat.di.foods.FoodScope;
 import com.amuyu.whattoeat.domain.model.Food;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,12 +20,14 @@ public class FoodsPresenter implements FoodsContract.Presenter {
     private final FoodsContract.View view;
     private final Repository repository;
     private final String situationId;
+    private HashMap<String, Food> mSeletedFoods;
 
     @Inject
     public FoodsPresenter(FoodsContract.View view, Repository repository, @FoodScope String situationId) {
         this.view = view;
         this.repository = repository;
         this.situationId = situationId;
+        mSeletedFoods = new LinkedHashMap<>();
     }
 
     @Override
@@ -54,5 +59,23 @@ public class FoodsPresenter implements FoodsContract.Presenter {
     @Override
     public void askWhatToEat() {
         Logger.d("");
+    }
+
+    @Override
+    public void selectFood(Food food, boolean selected) {
+        if (mSeletedFoods.size() > 4) {
+            view.showOverSelectedFood();
+            return ;
+        }
+
+        if (selected)
+            mSeletedFoods.put(food.getId(), food);
+        else
+            mSeletedFoods.remove(food.getId());
+    }
+
+    @Override
+    public void ask() {
+        view.showRequest(new ArrayList<Food>(mSeletedFoods.values()));
     }
 }

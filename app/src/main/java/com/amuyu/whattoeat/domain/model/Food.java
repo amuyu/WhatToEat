@@ -6,9 +6,10 @@ import android.support.annotation.NonNull;
 import com.google.common.base.Objects;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public final class Food {
+public class Food implements Serializable {
     @NonNull
     @SerializedName("id")
     private String id;
@@ -19,6 +20,9 @@ public final class Food {
     @SerializedName("sid")
     private String sid;
 
+    @SerializedName("hasImage")
+    private boolean hasImage;
+
     public Food() {
         // Firebase Database
     }
@@ -28,14 +32,27 @@ public final class Food {
     }
 
     public Food(String id, String name, String sid) {
+        this(id,name,sid,false);
+    }
+
+    public Food(String id, String name, String sid, boolean hasImage) {
         this.id = id;
         this.name = name;
         this.sid = sid;
+        this.hasImage = hasImage;
     }
 
-    @NonNull
+
     public String getId() {
         return id;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public boolean isHasImage() {
+        return hasImage;
     }
 
     public String getName() {
@@ -55,5 +72,14 @@ public final class Food {
     @Override
     public int hashCode() {
         return Objects.hashCode(id, name, sid);
+    }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", sid='" + sid + '\'' +
+                '}';
     }
 }

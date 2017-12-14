@@ -54,7 +54,7 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final SituationViewItem situation = items.get(position);
         if (situation instanceof GroupItem) {
             GroupItem item = (GroupItem)situation;
@@ -65,6 +65,7 @@ public class SituationsAdapter extends RecyclerView.Adapter<SituationsAdapter.Vi
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    holder.itemView.setSelected(true);
                     itemListener.onItemClick(item);
                 }
             });
