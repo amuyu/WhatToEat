@@ -5,6 +5,7 @@ import com.amuyu.logger.Logger;
 import com.amuyu.whattoeat.data.repo.Repository;
 import com.amuyu.whattoeat.di.foods.FoodScope;
 import com.amuyu.whattoeat.domain.model.Food;
+import com.amuyu.whattoeat.domain.model.Situation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,11 +58,6 @@ public class FoodsPresenter implements FoodsContract.Presenter {
     }
 
     @Override
-    public void askWhatToEat() {
-        Logger.d("");
-    }
-
-    @Override
     public void selectFood(Food food, boolean selected) {
         if (mSeletedFoods.size() > 4) {
             view.showOverSelectedFood();
@@ -76,6 +72,8 @@ public class FoodsPresenter implements FoodsContract.Presenter {
 
     @Override
     public void ask() {
-        view.showRequest(new ArrayList<Food>(mSeletedFoods.values()));
+        Logger.d("sId:"+situationId);
+        Situation situation = repository.getSituation(situationId);
+        view.showRequest(new ArrayList<Food>(mSeletedFoods.values()), situation.getName());
     }
 }

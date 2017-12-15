@@ -11,4 +11,5 @@ public interface LocalApi {
     List<Situation> getSituations();
     List<Food> getFoods(String situationId);
     List<Group> getGroups();
+    Situation getSituation(String situationId);
 }

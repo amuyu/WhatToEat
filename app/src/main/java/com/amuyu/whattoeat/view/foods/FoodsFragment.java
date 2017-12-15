@@ -20,15 +20,17 @@ import com.amuyu.whattoeat.data.repo.remote.IFirebaseRepo;
 import com.amuyu.whattoeat.di.foods.FoodsModule;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.infra.GlideApp;
-import com.amuyu.whattoeat.view.SampleActivity;
 import com.amuyu.whattoeat.view.WApplication;
+import com.amuyu.whattoeat.view.request.RequestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.amuyu.whattoeat.view.SampleActivity.FOOD_LIST;
+import static com.amuyu.whattoeat.view.request.RequestActivity.FOOD_LIST;
+import static com.amuyu.whattoeat.view.request.RequestActivity.SITUATION_NAME;
+
 
 public class FoodsFragment extends Fragment implements FoodsContract.View, FoodItemListener {
 
@@ -104,10 +106,11 @@ public class FoodsFragment extends Fragment implements FoodsContract.View, FoodI
     }
 
     @Override
-    public void showRequest(ArrayList<Food> selectedFood) {
+    public void showRequest(ArrayList<Food> selectedFood, String situationName) {
         Logger.d(selectedFood);
-        Intent intent = new Intent(getActivity(), SampleActivity.class);
+        Intent intent = new Intent(getActivity(), RequestActivity.class);
         intent.putExtra(FOOD_LIST, selectedFood);
+        intent.putExtra(SITUATION_NAME, situationName);
         startActivity(intent);
     }
 

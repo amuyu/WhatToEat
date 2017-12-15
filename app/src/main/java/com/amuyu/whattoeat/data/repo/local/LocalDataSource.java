@@ -72,4 +72,9 @@ public class LocalDataSource implements DataSource {
             }
         }, BackpressureStrategy.LATEST);
     }
+
+    @Override
+    public Situation getSituation(String id) {
+        return localApi.getSituation(id);
+    }
 }

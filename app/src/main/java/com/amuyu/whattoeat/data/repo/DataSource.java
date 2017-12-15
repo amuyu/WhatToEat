@@ -16,4 +16,6 @@ public interface DataSource {
     Flowable<List<Food>> getFoods(final String situationId);
 
     Flowable<List<Group>> getGroups();
+
+    Situation getSituation(String id);
 }

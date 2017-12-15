@@ -5,4 +5,7 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="kakaolink_host">kakaolink</string>
+
+
+    <string name="request_title">"%1$s" 이 중에 뭐 먹을지 골라줘</string>
 </resources>

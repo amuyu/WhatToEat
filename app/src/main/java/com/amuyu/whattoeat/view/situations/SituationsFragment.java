@@ -15,8 +15,8 @@ import com.amuyu.whattoeat.R;
 import com.amuyu.whattoeat.di.situations.SituationModule;
 import com.amuyu.whattoeat.view.WApplication;
 import com.amuyu.whattoeat.view.foods.FoodsFragment;
-import com.amuyu.whattoeat.view.model.SituationItem;
-import com.amuyu.whattoeat.view.model.SituationViewItem;
+import com.amuyu.whattoeat.view.situations.model.SituationItem;
+import com.amuyu.whattoeat.view.situations.model.SituationViewItem;
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager;
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration;
 

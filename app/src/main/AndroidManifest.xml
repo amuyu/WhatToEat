@@ -26,10 +26,8 @@
         </activity>
 
         <activity
-            android:name=".MainActivity" />
+            android:name=".MainActivity">
 
-
-        <activity android:name=".view.SampleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,6 +37,9 @@
                     android:host="@string/kakaolink_host" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.SampleActivity"/>
+        <activity android:name=".view.request.RequestActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

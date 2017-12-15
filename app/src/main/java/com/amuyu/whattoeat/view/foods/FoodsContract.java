@@ -11,14 +11,12 @@ import java.util.List;
 public interface FoodsContract {
     interface View extends BaseView<Presenter> {
         void showFoods(List<Food> foods);
-        void showRequest(ArrayList<Food> selectedFood);
+        void showRequest(ArrayList<Food> selectedFood, String situationName);
         void showOverSelectedFood();
     }
 
     interface Presenter extends BasePresenter {
         void loadFoods();
-        void askWhatToEat();
-
         void selectFood(Food food, boolean selected);
         void ask();
     }

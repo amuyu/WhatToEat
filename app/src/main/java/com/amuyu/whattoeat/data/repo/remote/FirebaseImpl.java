@@ -6,13 +6,11 @@ import com.amuyu.whattoeat.infra.GlideRequest;
 import com.amuyu.whattoeat.infra.GlideRequests;
 import com.google.firebase.storage.StorageReference;
 
-import javax.inject.Inject;
-
 public class FirebaseImpl implements IFirebaseRepo {
 
     private FireBaseRepo mFireBaseRepo;
 
-    @Inject public FirebaseImpl() {
+    public FirebaseImpl() {
         mFireBaseRepo = new FireBaseRepo();
     }
 

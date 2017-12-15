@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.amuyu.whattoeat.R;
-import com.amuyu.whattoeat.view.model.GroupItem;
-import com.amuyu.whattoeat.view.model.SituationItem;
-import com.amuyu.whattoeat.view.model.SituationViewItem;
+import com.amuyu.whattoeat.view.situations.model.GroupItem;
+import com.amuyu.whattoeat.view.situations.model.SituationItem;
+import com.amuyu.whattoeat.view.situations.model.SituationViewItem;
 
 import java.util.ArrayList;
 import java.util.List;

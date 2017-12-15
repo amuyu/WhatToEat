@@ -6,9 +6,9 @@ import com.amuyu.whattoeat.data.Remote;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.domain.model.Group;
 import com.amuyu.whattoeat.domain.model.Situation;
-import com.amuyu.whattoeat.view.model.GroupItem;
-import com.amuyu.whattoeat.view.model.SituationItem;
-import com.amuyu.whattoeat.view.model.SituationViewItem;
+import com.amuyu.whattoeat.view.situations.model.GroupItem;
+import com.amuyu.whattoeat.view.situations.model.SituationItem;
+import com.amuyu.whattoeat.view.situations.model.SituationViewItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class Repository implements DataSource {
     private final DataSource dataSource;
 
     private HashMap<String, Group> mCacheGroups;
-    private HashMap<String, Situation> mCacheSituations;
+    private static HashMap<String, Situation> mCacheSituations;
     private HashMap<String, Food> mCacheFoods;
 
     private boolean isCacheDirty = false;
@@ -110,6 +110,13 @@ public class Repository implements DataSource {
         return dataSource.getGroups();
     }
 
+    @Override
+    public Situation getSituation(String id) {
+        if (mCacheSituations == null) throw new NullPointerException("CacheSituation is null!!!");
+        Logger.d(mCacheSituations);
+        return mCacheSituations.get(id);
+    }
+
     private void initCache() {
         if (mCacheGroups == null) mCacheGroups = new LinkedHashMap<>();
         if (mCacheSituations == null) mCacheSituations = new LinkedHashMap<>();
@@ -126,11 +133,14 @@ public class Repository implements DataSource {
     }
 
     private void refreshCacheSituations(List<Situation> situations) {
+        Logger.d(situations);
         initCache();
         mCacheSituations.clear();
         for (Situation situation : situations) {
-            mCacheSituations.put(situation.getId(), situation);
+            mCacheSituations.put(situation.getId(),
+                    new Situation(situation.getId(), situation.getName(), situation.getGid()));
         }
+        Logger.d(mCacheSituations);
         isCacheDirty = false;
     }
 

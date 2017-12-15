@@ -8,48 +8,49 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:id="@+id/layout">
 
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#2f333a"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView2"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_weight="1"/>
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/request_food_height"
+            android:background="#2f333a"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/imageView2"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"/>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#494e56"
-        app:layout_constraintLeft_toRightOf="@id/imageView1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_weight="1"/>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/request_food_height"
+            android:background="#494e56"
+            app:layout_constraintLeft_toRightOf="@id/imageView1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_weight="1"/>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#494e56"
-        app:layout_constraintTop_toBottomOf="@id/imageView1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView4"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_weight="1"/>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/request_food_height"
+            android:background="#494e56"
+            app:layout_constraintTop_toBottomOf="@id/imageView1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/imageView4"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"/>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#2f333a"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        app:layout_constraintLeft_toRightOf="@id/imageView3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_weight="1"/>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/request_food_height"
+            android:background="#2f333a"
+            app:layout_constraintTop_toBottomOf="@id/imageView2"
+            app:layout_constraintLeft_toRightOf="@id/imageView3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_weight="1"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -64,6 +65,7 @@
             android:id="@+id/btnInsta"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:onClick="onClick"
             android:background="@drawable/insta_icon"/>
         
         <Space
@@ -74,6 +76,7 @@
             android:id="@+id/btnKakao"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:onClick="onClick"
             android:background="@drawable/kakaolink_btn_medium"/>
 
 

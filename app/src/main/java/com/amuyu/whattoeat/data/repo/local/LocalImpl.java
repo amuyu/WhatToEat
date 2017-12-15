@@ -49,6 +49,15 @@ public class LocalImpl implements LocalApi {
         return groups;
     }
 
+    @Override
+    public Situation getSituation(String situationId) {
+        for (Situation situation : situations) {
+            if (situationId.equals(situation.getId()))
+                return situation;
+        }
+        return null;
+    }
+
     private void loadData() {
         loadSituations();
         loadSituationFoods();

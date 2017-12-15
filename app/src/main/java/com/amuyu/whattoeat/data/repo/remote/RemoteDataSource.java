@@ -111,4 +111,10 @@ public class RemoteDataSource implements DataSource {
             }
         }, BackpressureStrategy.LATEST);
     }
+
+    @Override
+    public Situation getSituation(String id) {
+        // Nothing to do.
+        return null;
+    }
 }

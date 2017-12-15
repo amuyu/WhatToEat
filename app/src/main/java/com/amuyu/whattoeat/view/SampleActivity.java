@@ -43,6 +43,7 @@ public class SampleActivity extends AppCompatActivity {
 
     private static final int FROG_ID = 212121;
     public static final String FOOD_LIST = "food_list";
+    public static final String SITUATION_NAME = "situation_name";
     Context context;
     boolean clicked = false;
     public IFirebaseRepo repo;

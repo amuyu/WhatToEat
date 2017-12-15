@@ -1,4 +1,4 @@
-package com.amuyu.whattoeat.view.model;
+package com.amuyu.whattoeat.view.situations.model;
 
 
 import android.support.annotation.NonNull;

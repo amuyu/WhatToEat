@@ -3,8 +3,8 @@ package com.amuyu.whattoeat.view.situations;
 
 import com.amuyu.whattoeat.view.BasePresenter;
 import com.amuyu.whattoeat.view.BaseView;
-import com.amuyu.whattoeat.view.model.SituationItem;
-import com.amuyu.whattoeat.view.model.SituationViewItem;
+import com.amuyu.whattoeat.view.situations.model.SituationItem;
+import com.amuyu.whattoeat.view.situations.model.SituationViewItem;
 
 import java.util.List;
 
