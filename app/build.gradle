@@ -50,6 +50,7 @@ dependencies {
     implementation "com.android.support:support-v4:$versions.supportLibrary"
     implementation "com.android.support.constraint:constraint-layout:$versions.constraintLayout"
     implementation "com.android.support:support-vector-drawable:$versions.supportLibrary"
+    implementation "com.android.support:support-dynamic-animation:$versions.supportLibrary"
 
     implementation "com.amuyu:logger:$versions.logger"
     implementation "io.reactivex.rxjava2:rxjava:$versions.rxjava"

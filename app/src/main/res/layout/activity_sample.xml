@@ -79,6 +79,17 @@
             android:onClick="onClick"
             android:background="@drawable/kakaolink_btn_medium"/>
 
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="onClick"
+            android:background="@drawable/ic_casino_black"/>
+
 
     </LinearLayout>
 

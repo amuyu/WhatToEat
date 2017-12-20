@@ -40,6 +40,7 @@
 
         <activity android:name=".view.SampleActivity"/>
         <activity android:name=".view.request.RequestActivity"/>
+        <activity android:name=".view.random.RandomActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

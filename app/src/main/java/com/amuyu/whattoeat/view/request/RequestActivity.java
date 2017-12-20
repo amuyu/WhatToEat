@@ -19,6 +19,7 @@ import com.amuyu.whattoeat.di.request.RequestModule;
 import com.amuyu.whattoeat.domain.model.Food;
 import com.amuyu.whattoeat.infra.GlideApp;
 import com.amuyu.whattoeat.view.WApplication;
+import com.amuyu.whattoeat.view.random.RandomActivity;
 import com.amuyu.whattoeat.view.request.model.Menu;
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
@@ -54,6 +55,12 @@ public class RequestActivity extends AppCompatActivity implements RequestContrac
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        findViewById(R.id.btnRandom).setClickable(true);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         presenter.start((ArrayList<Food>)getIntent().getSerializableExtra(FOOD_LIST),
@@ -74,6 +81,11 @@ public class RequestActivity extends AppCompatActivity implements RequestContrac
                 break;
             case R.id.btnKakao:
                 presenter.shareKakao(this);
+                break;
+            case R.id.btnRandom:
+                view.setClickable(false);
+                Intent intent = new Intent(RequestActivity.this, RandomActivity.class);
+                startActivity(intent);
                 break;
         }
     }
